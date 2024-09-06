@@ -1,8 +1,13 @@
 "use client"
 import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 import { Button } from '../../../components/ui/button';
 
 function AddCourse() {
+  const Router = useRouter();
+  const handleRedirect = () =>{
+    Router.push('/create-course');
+  };
   const {user}=useUser();
   return (
     <div className='flex items-center justify-between'>
@@ -11,7 +16,7 @@ function AddCourse() {
             <p className='text-sm text-gray-500'>Create a new course with MindSparks</p>
         </div>
         
-        <Button>Create New Course</Button>
+        <Button onClick={handleRedirect}>Create New Course</Button>
         
     </div>
   )
